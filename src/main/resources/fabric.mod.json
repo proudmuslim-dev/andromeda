@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "andromeda",
+  "version": "1.0.0",
+
+  "name": "Andromeda", "description": "Andromeda is a mod centered on improving the GUI of minecraft, making it sleek and modern.",
+  "authors": [
+    "Proudmuslim"
+  ],
+  "contact": {
+    "homepage": "https://proudmuslim-dev.github.io/andromeda.html",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "com.proudmuslim.andromeda.Andromeda"
+      }
+    ]
+  },
+  "requires": {
+    "fabric-language-kotlin": ">=1.4.0"
+    },
+  "mixins": [
+    "modid.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.8.7",
+    "fabric": "*",
+    "fabric-language-kotlin": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
