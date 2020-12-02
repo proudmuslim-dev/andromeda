@@ -1,4 +1,4 @@
-<div style="align-content: center">
+<div align="center">
 
 # Andromeda
 [![Powered By Electricity](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
