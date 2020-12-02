@@ -8,11 +8,17 @@ import net.minecraft.item.Item
 import net.minecraft.util.Hand
 
 class CreeperHeartItem(settings: Settings): Item(settings) {
+
+    private var using: Boolean = true
+
     override fun use(world: World?, playerEntity: PlayerEntity?, hand: Hand?): TypedActionResult<ItemStack> {
-        when(hand) {
-            Hand.MAIN_HAND -> println("Sssssssssssssssss.........") // Prints twice because I'm lazy and cba to fix it
-            else -> println("Else statement triggered!")
+        if (using) {
+            when(hand) {
+                Hand.MAIN_HAND -> println("Sssssssssssssssss.........") // Prints twice because I'm lazy and cba to fix it
+                else -> println("Else statement triggered!")
+            }
         }
+        using = !using
 
         return super.use(world, playerEntity, hand)
     }

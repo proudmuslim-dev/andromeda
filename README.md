@@ -1,8 +1,9 @@
-<div align="center">
+<div style="align-content: center">
 
 # Andromeda
-[![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/gluten-free.svg)](https://forthebadge.com)
+[![Powered By Electricity](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
+[![Gluten Free](https://forthebadge.com/images/badges/gluten-free.svg)](https://forthebadge.com)
+[![Made With Crayon](https://forthebadge.com/images/badges/made-with-crayons.svg)](https://forthebadge.com)
 
 </div>
 
