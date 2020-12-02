@@ -2,6 +2,7 @@ package com.proudmuslim.andromeda
 
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.util.hit.BlockHitResult
+import net.minecraft.util.math.Direction
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.ActionResult
 import net.minecraft.text.LiteralText
@@ -11,7 +12,7 @@ import net.minecraft.world.World
 import net.minecraft.block.Block
 import net.minecraft.item.Items
 import net.minecraft.util.Hand
-import net.minecraft.util.math.Direction
+
 
 class GunpowderBlock(settings: Settings): Block(settings) {
     override fun onUse(blockState: BlockState?, world: World, blockPos: BlockPos, playerEntity: PlayerEntity, hand: Hand?, blockHitResult: BlockHitResult?): ActionResult {
