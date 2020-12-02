@@ -20,12 +20,19 @@ repositories {
         url = "http://maven.fabricmc.net/"
         name = "Fabric"
     }
+
+    // To be un commented once elementa gets 1.16 support
+    /* maven {
+        url = "https://repo.sk1er.club/repository/maven-public"
+        name = "Elementa"
+    } */
 }
 
 dependencies {
     //to change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     // Fabric API. This is technically optional, but you probably want it anyway.
