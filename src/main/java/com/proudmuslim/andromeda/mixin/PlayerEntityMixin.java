@@ -20,7 +20,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Inject(method = "onDeath", at = @At("HEAD"))
     private void onDeath(final DamageSource source, final CallbackInfo ci) {
-        if (source.getAttacker() instanceof PlayerEntity) System.out.println("you have been kiled");
+        if (source.getAttacker() instanceof PlayerEntity) System.out.println("you have been killed");
     }
 
 }

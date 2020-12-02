@@ -31,14 +31,14 @@ class Andromeda: ModInitializer {
      * @param[path] item name or something I dunno IntelliJ's not letting me see what [Identifier.path] is used in
      * @param[inventoryGroup] group to be sorted under in the creative inventory
      */
-    private fun register(block: Block, namespace: String, path: String, inventoryGroup: ItemGroup ) {
+    private fun blockRegister(block: Block, namespace: String, path: String, inventoryGroup: ItemGroup ) {
         register(Registry.ITEM, Identifier(namespace, path), BlockItem(block, Item.Settings().group(inventoryGroup)))
         register(Registry.BLOCK, Identifier(namespace, path), block)
     }
 
     override fun onInitialize() {
         // Dual registry as both a block and item for GUNPOWDER_BLOCK
-        register(BLOCK_GUNPOWDER, "andromeda", "gunpowder_block", ItemGroup.MATERIALS)
+        blockRegister(BLOCK_GUNPOWDER, "andromeda", "gunpowder_block", ItemGroup.MATERIALS)
 
         register(Registry.ITEM, Identifier("andromeda", "creeper_heart"), ITEM_CREEPER_HEART)
         register(Registry.ITEM, Identifier("andromeda", "mob_wand"), ITEM_MOB_WAND)
