@@ -9,12 +9,12 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
 
-class Smiter(settings: Item.Settings): Item(settings) {
+class Test(settings: Item.Settings): Item(settings) {
     var x: Int = 0
 
     override fun use(world: World?, playerEntity: PlayerEntity?, hand: Hand?): TypedActionResult<ItemStack> {
         x += 1
-        playerEntity?.sendMessage(LiteralText("Function called " + x + " times"), false) // Test why messages send twice
+        playerEntity?.sendMessage(LiteralText("Function called " + x + " time(s)"), false) // Test why messages send twice
 
         return super.use(world, playerEntity, hand)
     }

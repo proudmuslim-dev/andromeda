@@ -19,6 +19,7 @@ class Andromeda: ModInitializer {
         private val BLOCK_GUNPOWDER = GunpowderBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC).hardness(1.0f))
         private val ITEM_CREEPER_HEART = CreeperHeartItem(Item.Settings().group(ItemGroup.MATERIALS).maxCount(32))
         private val ITEM_MOB_WAND = HostileMobWand(Item.Settings().group(ItemGroup.TOOLS).maxCount(1))
+        private val ITEM_TEST_WAND = Test(Item.Settings().group(ItemGroup.TOOLS).maxCount(1))
 
     }
 
@@ -28,7 +29,7 @@ class Andromeda: ModInitializer {
      *
      * @param[block] the block
      * @param[namespace] the namespace under which you want to register the block (i.e. mod name)
-     * @param[path] item name or something I dunno IntelliJ's not letting me see what [Identifier.path] is used in
+     * @param[path] item name
      * @param[inventoryGroup] group to be sorted under in the creative inventory
      */
     private fun blockRegister(block: Block, namespace: String, path: String, inventoryGroup: ItemGroup ) {
@@ -42,6 +43,7 @@ class Andromeda: ModInitializer {
 
         register(Registry.ITEM, Identifier("andromeda", "creeper_heart"), ITEM_CREEPER_HEART)
         register(Registry.ITEM, Identifier("andromeda", "mob_wand"), ITEM_MOB_WAND)
+        register(Registry.ITEM, Identifier("andromeda", "test_wand"), ITEM_TEST_WAND) // Confirmed: right clicking once does in fact call the function twice
 
         for(x in 1..10) {
             println("Fabric mod loaded!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
