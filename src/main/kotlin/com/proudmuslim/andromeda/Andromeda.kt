@@ -2,14 +2,15 @@ package com.proudmuslim.andromeda
 
 
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
+import com.proudmuslim.andromeda.tools.RedstonePickaxe
 import net.minecraft.util.registry.Registry.register
 import net.minecraft.util.registry.Registry
 import net.fabricmc.api.ModInitializer
-import net.minecraft.block.Block
-import net.minecraft.block.Material
+import net.minecraft.util.Identifier
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemGroup
-import net.minecraft.util.Identifier
+import net.minecraft.block.Material
+import net.minecraft.block.Block
 import net.minecraft.item.Item
 
 class Andromeda: ModInitializer {
@@ -41,9 +42,10 @@ class Andromeda: ModInitializer {
         // Dual registry as both a block and item for GUNPOWDER_BLOCK
         blockRegister(BLOCK_GUNPOWDER, "andromeda", "gunpowder_block", ItemGroup.MATERIALS)
 
+        register(Registry.ITEM, Identifier("andromeda", "redstone_pickaxe"), RedstonePickaxe.REDSTONE_PICKAXE)
         register(Registry.ITEM, Identifier("andromeda", "creeper_heart"), ITEM_CREEPER_HEART)
-        register(Registry.ITEM, Identifier("andromeda", "mob_wand"), ITEM_MOB_WAND)
         register(Registry.ITEM, Identifier("andromeda", "test_wand"), ITEM_TEST_WAND) // Confirmed: right clicking once does in fact call the function twice
+        register(Registry.ITEM, Identifier("andromeda", "mob_wand"), ITEM_MOB_WAND)
 
         for(x in 1..10) {
             println("Fabric mod loaded!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
