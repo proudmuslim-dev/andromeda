@@ -4,14 +4,13 @@ package com.proudmuslim.andromeda
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import com.proudmuslim.andromeda.tools.RedstonePickaxe
 import net.minecraft.util.registry.Registry.register
+import com.proudmuslim.andromeda.tools.CustomShield
 import net.minecraft.util.registry.Registry
 import net.fabricmc.api.ModInitializer
 import net.minecraft.util.Identifier
-import net.minecraft.item.BlockItem
-import net.minecraft.item.ItemGroup
 import net.minecraft.block.Material
 import net.minecraft.block.Block
-import net.minecraft.item.Item
+import net.minecraft.item.*
 
 class Andromeda: ModInitializer {
 
@@ -19,6 +18,7 @@ class Andromeda: ModInitializer {
 
         private val BLOCK_GUNPOWDER = GunpowderBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC).hardness(1.0f))
         private val ITEM_CREEPER_HEART = CreeperHeartItem(Item.Settings().group(ItemGroup.MATERIALS).maxCount(32))
+        private val ITEM_CUSTOM_SHIELD = CustomShield(Item.Settings().group(ItemGroup.TOOLS).maxDamage(32767))
         private val ITEM_MOB_WAND = HostileMobWand(Item.Settings().group(ItemGroup.TOOLS).maxCount(1))
         private val ITEM_TEST_WAND = Test(Item.Settings().group(ItemGroup.TOOLS).maxCount(1))
 
@@ -42,14 +42,17 @@ class Andromeda: ModInitializer {
         // Dual registry as both a block and item for GUNPOWDER_BLOCK
         blockRegister(BLOCK_GUNPOWDER, "andromeda", "gunpowder_block", ItemGroup.MATERIALS)
 
-        register(Registry.ITEM, Identifier("andromeda", "redstone_pickaxe"), RedstonePickaxe.REDSTONE_PICKAXE)
+        register(Registry.ITEM, Identifier("andromeda", "redstone_pickaxe"), RedstonePickaxe.REDSTONE_PICKAXE) // TODO: Figure out how to texture this thing
         register(Registry.ITEM, Identifier("andromeda", "creeper_heart"), ITEM_CREEPER_HEART)
+        register(Registry.ITEM, Identifier("andromeda", "custom_shield"), ITEM_CUSTOM_SHIELD)
         register(Registry.ITEM, Identifier("andromeda", "test_wand"), ITEM_TEST_WAND) // Confirmed: right clicking once does in fact call the function twice
         register(Registry.ITEM, Identifier("andromeda", "mob_wand"), ITEM_MOB_WAND)
 
-        for(x in 1..10) {
+
+        repeat(10) {
             println("Fabric mod loaded!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
             println("I should be doing chem rn")
+            println("I wrote this in vr")
         }
     }
 
