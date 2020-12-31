@@ -3,10 +3,10 @@
   "package": "com.proudmuslim.andromeda.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "ShulkerBoxOreMixin"
   ],
   "client": [
-    "PlayerEntityMixin",
-    "TitleScreenMixin"
+    "PlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
