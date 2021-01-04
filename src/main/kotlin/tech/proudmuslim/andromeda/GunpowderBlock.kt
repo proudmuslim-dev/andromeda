@@ -1,4 +1,4 @@
-package com.proudmuslim.andromeda
+package tech.proudmuslim.andromeda
 
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.util.hit.BlockHitResult

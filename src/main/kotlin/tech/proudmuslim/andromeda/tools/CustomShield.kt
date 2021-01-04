@@ -1,4 +1,4 @@
-package com.proudmuslim.andromeda.tools
+package tech.proudmuslim.andromeda.tools
 
 import net.minecraft.item.ShieldItem
 import net.minecraft.item.ItemStack

@@ -1,4 +1,4 @@
-package com.proudmuslim.andromeda.mixin;
+package tech.proudmuslim.andromeda.mixin;
 
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.Inject;

@@ -1,15 +1,15 @@
-package com.proudmuslim.andromeda
+package tech.proudmuslim.andromeda
 
 
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.api.ModInitializer
 
-import com.proudmuslim.andromeda.tools.RedstonePickaxe
-import com.proudmuslim.andromeda.tools.CustomShield
+import tech.proudmuslim.andromeda.tools.RedstonePickaxe
+import tech.proudmuslim.andromeda.tools.CustomShield
 
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig
-import net.minecraft.world.gen.feature.ConfiguredFeature
 import net.minecraft.world.gen.feature.OreFeatureConfig
+import net.minecraft.util.registry.BuiltinRegistries
 import net.minecraft.util.registry.Registry.register
 import net.minecraft.world.gen.decorator.Decorator
 import net.minecraft.util.registry.RegistryKey
@@ -20,7 +20,6 @@ import net.minecraft.block.Material
 import net.minecraft.block.Blocks
 import net.minecraft.block.Block
 import net.minecraft.item.*
-import net.minecraft.util.registry.BuiltinRegistries
 
 
 class Andromeda: ModInitializer {
@@ -40,6 +39,7 @@ class Andromeda: ModInitializer {
             .repeat(15)
 
     }
+
     /**
      * Register a block as both a block and an item.
      *
@@ -61,13 +61,15 @@ class Andromeda: ModInitializer {
         // Dual registry as both a block and item for GUNPOWDER_BLOCK
         blockRegister(BLOCK_GUNPOWDER, "andromeda", "gunpowder_block", ItemGroup.MATERIALS)
 
-        register(Registry.ITEM, Identifier("andromeda", "redstone_pickaxe"), RedstonePickaxe.REDSTONE_PICKAXE) // TODO: Figure out how to texture this thing
+        // See ShulkerBoxOreMixin for actual world generation modification
+        register(BuiltinRegistries.CONFIGURED_FEATURE, shulkerWoolOverworld.value, ORE_SHULKER_OVERWORLD)
+
+        register(Registry.ITEM, Identifier("andromeda", "redstone_pickaxe"), RedstonePickaxe.REDSTONE_PICKAXE)
         register(Registry.ITEM, Identifier("andromeda", "creeper_heart"), ITEM_CREEPER_HEART)
         register(Registry.ITEM, Identifier("andromeda", "custom_shield"), ITEM_CUSTOM_SHIELD)
         register(Registry.ITEM, Identifier("andromeda", "test_wand"), ITEM_TEST_WAND) // Confirmed: right clicking once does in fact call the function twice
         register(Registry.ITEM, Identifier("andromeda", "mob_wand"), ITEM_MOB_WAND)
 
-        register(BuiltinRegistries.CONFIGURED_FEATURE, shulkerWoolOverworld.value, ORE_SHULKER_OVERWORLD)
 
 
         repeat(10) {

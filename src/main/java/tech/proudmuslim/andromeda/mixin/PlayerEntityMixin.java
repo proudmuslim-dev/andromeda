@@ -1,4 +1,4 @@
-package com.proudmuslim.andromeda.mixin;
+package tech.proudmuslim.andromeda.mixin;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;

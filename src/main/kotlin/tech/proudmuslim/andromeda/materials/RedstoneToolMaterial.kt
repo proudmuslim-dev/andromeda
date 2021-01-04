@@ -1,4 +1,4 @@
-package com.proudmuslim.andromeda.materials
+package tech.proudmuslim.andromeda.materials
 
 import net.minecraft.item.ToolMaterial
 import net.minecraft.recipe.Ingredient
