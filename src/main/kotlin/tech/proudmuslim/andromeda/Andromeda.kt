@@ -1,25 +1,27 @@
+@file:Suppress("SameParameterValue")
+
 package tech.proudmuslim.andromeda
 
-
-import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
-import net.fabricmc.api.ModInitializer
-
-import tech.proudmuslim.andromeda.tools.RedstonePickaxe
-import tech.proudmuslim.andromeda.tools.CustomShield
-
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig
-import net.minecraft.world.gen.feature.OreFeatureConfig
 import net.minecraft.util.registry.BuiltinRegistries
 import net.minecraft.util.registry.Registry.register
 import net.minecraft.world.gen.decorator.Decorator
 import net.minecraft.util.registry.RegistryKey
-import net.minecraft.world.gen.feature.Feature
 import net.minecraft.util.registry.Registry
 import net.minecraft.util.Identifier
 import net.minecraft.block.Material
 import net.minecraft.block.Blocks
 import net.minecraft.block.Block
 import net.minecraft.item.*
+
+import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
+import net.minecraft.world.gen.decorator.ChanceDecoratorConfig
+import net.minecraft.world.gen.feature.*
+import net.fabricmc.api.ModInitializer
+
+import tech.proudmuslim.andromeda.features.EmeraldSpiral
+import tech.proudmuslim.andromeda.tools.RedstonePickaxe
+import tech.proudmuslim.andromeda.tools.CustomShield
 
 
 class Andromeda: ModInitializer {
@@ -32,11 +34,30 @@ class Andromeda: ModInitializer {
         private val ITEM_MOB_WAND = HostileMobWand(Item.Settings().group(ItemGroup.TOOLS).maxCount(1))
         private val ITEM_TEST_WAND = Test(Item.Settings().group(ItemGroup.TOOLS).maxCount(1))
 
-        @JvmStatic public val ORE_SHULKER_OVERWORLD = Feature.ORE
+        @JvmStatic val EMERALD_SPIRAL: Feature<DefaultFeatureConfig> = EmeraldSpiral(DefaultFeatureConfig.CODEC)
+        @JvmStatic val EMERALD_SPIRAL_CONFIGURED: ConfiguredFeature<*, *>  = EMERALD_SPIRAL
+            .configure(FeatureConfig.DEFAULT)
+            .decorate(Decorator.CHANCE.configure(ChanceDecoratorConfig(100)))
+
+        @JvmStatic val ORE_SHULKER_OVERWORLD: ConfiguredFeature<*, *> = Feature.ORE
             .configure(OreFeatureConfig( OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.BLUE_SHULKER_BOX.defaultState, 7))
             .decorate(Decorator.RANGE.configure(RangeDecoratorConfig(0, 0, 64)))
             .spreadHorizontally()
             .repeat(15)
+
+    }
+
+    /**
+     * Register a feature in one go
+     *
+     * @param[feature] the feature
+     * @param[configuredFeature] the feature, configured
+     * @param[namespace] typically your mode name, the namespace under which you want to register your feature
+     * @param[path] item name
+     */
+    private fun featureRegister(feature: Feature<DefaultFeatureConfig>, configuredFeature: ConfiguredFeature<*, *>, namespace: String, path: String) {
+        register(Registry.FEATURE, Identifier(namespace, path), feature)
+        register(BuiltinRegistries.CONFIGURED_FEATURE, Identifier(namespace, path), configuredFeature)
 
     }
 
@@ -61,7 +82,8 @@ class Andromeda: ModInitializer {
         // Dual registry as both a block and item for GUNPOWDER_BLOCK
         blockRegister(BLOCK_GUNPOWDER, "andromeda", "gunpowder_block", ItemGroup.MATERIALS)
 
-        // See ShulkerBoxOreMixin for actual world generation modification
+        // See DefaultBiomeFeaturesMixin for actual world generation modification
+        featureRegister(EMERALD_SPIRAL, EMERALD_SPIRAL_CONFIGURED, "andromeda", "emerald_spiral")
         register(BuiltinRegistries.CONFIGURED_FEATURE, shulkerWoolOverworld.value, ORE_SHULKER_OVERWORLD)
 
         register(Registry.ITEM, Identifier("andromeda", "redstone_pickaxe"), RedstonePickaxe.REDSTONE_PICKAXE)

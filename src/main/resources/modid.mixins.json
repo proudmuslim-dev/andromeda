@@ -1,12 +1,12 @@
 {
   "required": true,
-  "package": "com.proudmuslim.andromeda.mixin",
+  "package": "tech.proudmuslim.andromeda.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "tech.proudmuslim.andromeda.mixin.ShulkerBoxOreMixin"
+    "DefaultBiomeFeaturesMixin"
   ],
   "client": [
-    "tech.proudmuslim.andromeda.mixin.PlayerEntityMixin"
+    "PlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

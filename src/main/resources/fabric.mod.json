@@ -20,7 +20,7 @@
     "main": [
       {
         "adapter": "kotlin",
-        "value": "com.proudmuslim.andromeda.Andromeda"
+        "value": "tech.proudmuslim.andromeda.Andromeda"
       }
     ]
   },

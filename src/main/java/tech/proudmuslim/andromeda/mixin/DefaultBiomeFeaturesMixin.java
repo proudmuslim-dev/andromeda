@@ -12,12 +12,16 @@ import net.minecraft.world.gen.GenerationStep;
 import tech.proudmuslim.andromeda.Andromeda;
 
 @Mixin(DefaultBiomeFeatures.class)
-public abstract class ShulkerBoxOreMixin {
+public abstract class DefaultBiomeFeaturesMixin {
 
     @Inject(method = "addDefaultOres", at = @At("TAIL"))
     private static void addDefaultOres(GenerationSettings.Builder builder, CallbackInfo ci) {
         builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, Andromeda.getORE_SHULKER_OVERWORLD());
     }
 
+    @Inject(method = "addPlainsFeatures", at = @At("TAIL"))
+    private static void addPlainsFeatures(GenerationSettings.Builder builder, CallbackInfo ci) {
+        builder.feature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, Andromeda.Companion.getEMERALD_SPIRAL_CONFIGURED());
+    }
 
 }
