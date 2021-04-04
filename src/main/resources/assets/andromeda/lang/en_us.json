@@ -1,4 +1,7 @@
 {
-  "item.andromeda.creeper_heart": "Build Icon",
-  "item.andromeda.redstone_pickaxe": "Redstone Pickaxe"
+  "item.andromeda.redstone_pickaxe": "Redstone Pickaxe",
+  "item.andromeda.gunpowder_block": "Gunpowder Block",
+  "item.andromeda.gunpowder_bag": "Gunpowder Bag",
+  "item.andromeda.gunpowder_bag.tooltip": "This is a gunpowder bag",
+  "item.andromeda.creeper_heart": "Build Icon"
 }

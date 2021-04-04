@@ -10,7 +10,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Mixins HAVE to be written in java due to constraints in the Mixin system. */
+/**
+ * Mixins HAVE to be written in java due to constraints in the Mixin system.
+ */
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
 
@@ -20,7 +22,9 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Inject(method = "onDeath", at = @At("HEAD"))
     private void onDeath(final DamageSource source, final CallbackInfo ci) {
-        if (source.getAttacker() instanceof PlayerEntity) System.out.println("you have been killed");
+        if (source.getAttacker() instanceof PlayerEntity) {
+            System.out.println("you have been killed");
+        }
     }
 
 }

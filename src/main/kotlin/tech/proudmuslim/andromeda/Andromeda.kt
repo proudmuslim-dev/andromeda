@@ -22,6 +22,7 @@ import net.fabricmc.api.ModInitializer
 import tech.proudmuslim.andromeda.features.EmeraldSpiral
 import tech.proudmuslim.andromeda.tools.RedstonePickaxe
 import tech.proudmuslim.andromeda.tools.CustomShield
+import tech.proudmuslim.andromeda.item.GunpowderBag
 
 
 class Andromeda: ModInitializer {
@@ -31,6 +32,7 @@ class Andromeda: ModInitializer {
         private val BLOCK_GUNPOWDER = GunpowderBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC).hardness(1.0f))
         private val ITEM_CREEPER_HEART = CreeperHeartItem(Item.Settings().group(ItemGroup.MATERIALS).maxCount(32))
         private val ITEM_CUSTOM_SHIELD = CustomShield(Item.Settings().group(ItemGroup.TOOLS).maxDamage(32767))
+        private val ITEM_GUNPOWDER_BAG = GunpowderBag(Item.Settings().group(ItemGroup.TOOLS).maxCount(1))
         private val ITEM_MOB_WAND = HostileMobWand(Item.Settings().group(ItemGroup.TOOLS).maxCount(1))
         private val ITEM_TEST_WAND = Test(Item.Settings().group(ItemGroup.TOOLS).maxCount(1))
 
@@ -58,7 +60,6 @@ class Andromeda: ModInitializer {
     private fun featureRegister(feature: Feature<DefaultFeatureConfig>, configuredFeature: ConfiguredFeature<*, *>, namespace: String, path: String) {
         register(Registry.FEATURE, Identifier(namespace, path), feature)
         register(BuiltinRegistries.CONFIGURED_FEATURE, Identifier(namespace, path), configuredFeature)
-
     }
 
     /**
@@ -75,8 +76,8 @@ class Andromeda: ModInitializer {
     }
 
     override fun onInitialize() {
-        val shulkerWoolOverworld = RegistryKey.of( Registry.CONFIGURED_FEATURE_WORLDGEN,
-            Identifier("andromeda", "ore_wool_overworld")
+        val shulkerOreOverworld = RegistryKey.of( Registry.CONFIGURED_FEATURE_WORLDGEN,
+            Identifier("andromeda", "ore_shulker_overworld")
         )
 
         // Dual registry as both a block and item for GUNPOWDER_BLOCK
@@ -84,10 +85,11 @@ class Andromeda: ModInitializer {
 
         // See DefaultBiomeFeaturesMixin for actual world generation modification
         featureRegister(EMERALD_SPIRAL, EMERALD_SPIRAL_CONFIGURED, "andromeda", "emerald_spiral")
-        register(BuiltinRegistries.CONFIGURED_FEATURE, shulkerWoolOverworld.value, ORE_SHULKER_OVERWORLD)
+        register(BuiltinRegistries.CONFIGURED_FEATURE, shulkerOreOverworld.value, ORE_SHULKER_OVERWORLD)
 
         register(Registry.ITEM, Identifier("andromeda", "redstone_pickaxe"), RedstonePickaxe.REDSTONE_PICKAXE)
         register(Registry.ITEM, Identifier("andromeda", "creeper_heart"), ITEM_CREEPER_HEART)
+        register(Registry.ITEM, Identifier("andromeda", "gunpowder_bag"), ITEM_GUNPOWDER_BAG)
         register(Registry.ITEM, Identifier("andromeda", "custom_shield"), ITEM_CUSTOM_SHIELD)
         register(Registry.ITEM, Identifier("andromeda", "test_wand"), ITEM_TEST_WAND) // Confirmed: right clicking once does in fact call the function twice
         register(Registry.ITEM, Identifier("andromeda", "mob_wand"), ITEM_MOB_WAND)

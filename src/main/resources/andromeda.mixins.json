@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "tech.proudmuslim.andromeda.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "DefaultBiomeFeaturesMixin"
+  ],
+  "client": [
+    "PlayerEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
